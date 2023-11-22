@@ -1,0 +1,2 @@
+### UserPlants Index
+GET http://localhost:3000/user_plants.json
