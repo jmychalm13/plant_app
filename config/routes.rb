@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   patch "/user_plants/:id" => "user_plants#update"
 
   delete "/user_plants/:id" => "user_plants#destroy"
+
+  post "/users" => "users#create"
 end

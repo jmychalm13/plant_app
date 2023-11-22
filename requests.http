@@ -26,3 +26,15 @@ Content-Type: application/json
 
 ### Destroy Action
 DELETE http://localhost:3000/user_plants/2.json
+
+### User Create
+POST http://localhost:3000/users.json
+Content-Type: application/json
+
+{
+  "first_name": "John",
+  "last_name": "Smith",
+  "email": "john@test.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
