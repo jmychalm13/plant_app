@@ -15,4 +15,9 @@ class UserPlantsController < ApplicationController
     )
     render :show
   end
+
+  def show
+    @user_plant = UserPlant.find_by(id: params[:id])
+    render :show
+  end
 end
