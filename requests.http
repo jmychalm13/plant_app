@@ -1,2 +1,13 @@
 ### UserPlants Index
 GET http://localhost:3000/user_plants.json
+
+POST http://localhost:3000/user_plants.json
+Content-Type: application/json
+
+{
+  first_name: "Jess",
+  last_name: "Test",
+  email: "jess@test.com",
+  password: "password",
+  password_confirmation: "password"
+}
