@@ -1,0 +1,2 @@
+class WateringSchedule < ApplicationRecord
+end

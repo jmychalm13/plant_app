@@ -1,0 +1,2 @@
+class FertilizerSchedule < ApplicationRecord
+end
