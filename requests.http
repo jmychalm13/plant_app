@@ -50,4 +50,4 @@ Content-Type: application/json
 }
 
 ### Testing API
-GET https://perenual.com/api/species-care-guide-list?key=sk-vYpz655de3969b81c3077&q=monstera
+GET http://localhost:3000/care_instructions.json

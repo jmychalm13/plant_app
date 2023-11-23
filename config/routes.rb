@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  post "/users" => "users#create"
+
+  post "/sessions" => "sessions#create"
+
   get "/user_plants" => "user_plants#index"
 
   post "/user_plants" => "user_plants#create"
@@ -9,7 +13,5 @@ Rails.application.routes.draw do
 
   delete "/user_plants/:id" => "user_plants#destroy"
 
-  post "/users" => "users#create"
-
-  post "/sessions" => "sessions#create"
+  get "/care_instructions" => "care_instructions#index"
 end

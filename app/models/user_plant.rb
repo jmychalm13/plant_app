@@ -7,8 +7,4 @@ class UserPlant < ApplicationRecord
   has_many :cuttings
   belongs_to :type
 
-  def get_care_instructions
-
-  end
-
 end
