@@ -6,12 +6,12 @@ class UserPlantsController < ApplicationController
 
   def create
     @user_plant = UserPlant.create(
-      user_id: params[:user_id],
+      user_id: current_user.id,
       plant_id: params[:plant_id],
       zone_id: params[:zone_id],
       type_id: params[:type_id],
       name: params[:name],
-      img_url: params[img_url],
+      img_url: params[:img_url],
     )
     render :show
   end
@@ -24,7 +24,7 @@ class UserPlantsController < ApplicationController
   def update
     @user_plant = UserPlant.find_by(id: params[:id])
     @user_plant.update(
-      user_id: params[:user_id] || @user_plant.user_id,
+      user_id: current_user.id,
       plant_id: params[:plant_id] || @user_plant.plant_id,
       zone_id: params[:zone_id] || @user_plant.zone_id,
       type_id: params[:type_id] || @user_plant.type_id,
