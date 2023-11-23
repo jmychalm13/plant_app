@@ -48,3 +48,6 @@ Content-Type: application/json
   "email": "john@test.com",
   "password": "password"
 }
+
+### Testing API
+GET https://perenual.com/api/species-care-guide-list?key=sk-vYpz655de3969b81c3077&q=monstera
