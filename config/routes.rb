@@ -13,5 +13,5 @@ Rails.application.routes.draw do
 
   delete "/user_plants/:id" => "user_plants#destroy"
 
-  get "/care_instructions" => "care_instructions#index"
+  get "/care_instructions/:id" => "care_instructions#show"
 end

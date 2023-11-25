@@ -1,10 +1,9 @@
 class CareInstructionsController < ApplicationController
-  def index
-    require 'uri'
-    require 'net/http'
-
-    plant = UserPlant.first().name
-    
+  require 'uri'
+  require 'net/http'
+  
+  def show
+  plant = UserPlant.find(params[:id]).name
     url = URI("https://house-plants2.p.rapidapi.com/search?query=#{plant}")
     
     http = Net::HTTP.new(url.host, url.port)
@@ -15,6 +14,17 @@ class CareInstructionsController < ApplicationController
     request["X-RapidAPI-Host"] = 'house-plants2.p.rapidapi.com'
     
     response = http.request(request)
-    render json: response.read_body    
+    json_data = response.read_body
+
+    parsed_data = JSON.parse(json_data)
+
+    watering_instructions = []
+    parsed_data.each do |object|
+      watering_instructions << object["item"]["Watering"]
+    end
+
+    pp watering_instructions
+
+    render json: parsed_data
   end
 end

@@ -5,5 +5,6 @@ json.zone_id user_plant.zone_id
 json.type_id user_plant.type_id
 json.name user_plant.name
 json.img_url user_plant.img_url
+json.care_instructions user_plant.care_instructions
 json.created_at user_plant.created_at
 json.updated_at user_plant.updated_at

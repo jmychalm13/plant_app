@@ -50,4 +50,4 @@ Content-Type: application/json
 }
 
 ### Testing API
-GET http://localhost:3000/care_instructions.json
+GET http://localhost:3000/care_instructions/3.json
