@@ -3,8 +3,8 @@ class CareInstructionsController < ApplicationController
   require 'net/http'
   
   def show
-  plant = UserPlant.find(params[:id]).name
-    url = URI("https://house-plants2.p.rapidapi.com/search?query=#{plant}")
+  plant = UserPlant.find(params[:id])
+    url = URI("https://house-plants2.p.rapidapi.com/search?query=#{plant.name}")
     
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -16,15 +16,16 @@ class CareInstructionsController < ApplicationController
     response = http.request(request)
     json_data = response.read_body
 
-    parsed_data = JSON.parse(json_data)
+    @parsed_data = JSON.parse(json_data)
 
-    watering_instructions = []
-    parsed_data.each do |object|
-      watering_instructions << object["item"]["Watering"]
-    end
+    # Creating recommendation object to be returned to frontend containing light and water requirements
+    recommendation = CareInstruction.create(
+      user_plant_id: plant.id,
+      instructions: "This plants does best with #{@parsed_data[0]["item"]["Light ideal"]} and #{@parsed_data[0]["item"]["Watering"]} water"
+    )
 
-    pp watering_instructions
 
-    render json: parsed_data
+    render json: recommendation
+    # render json: @parsed_data
   end
 end

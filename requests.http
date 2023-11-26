@@ -15,7 +15,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDA4MjgzM
 }
 
 ###Show Action
-GET http://localhost:3000/user_plants/2.json
+GET http://localhost:3000/user_plants/3.json
 
 ### Update Action
 PATCH http://localhost:3000/user_plants/2.json
@@ -35,7 +35,7 @@ Content-Type: application/json
 {
   "first_name": "John",
   "last_name": "Smith",
-  "email": "john@test.com",
+  "email": "test@test.com",
   "password": "password",
   "password_confirmation": "password"
 }
@@ -49,5 +49,11 @@ Content-Type: application/json
   "password": "password"
 }
 
+### CareInstruction Show
+GET http://localhost:3000/care_instructions/3.json
+
 ### Testing API
 GET http://localhost:3000/care_instructions/3.json
+
+### Cuttings Index
+GET http://localhost:3000/cuttings.json
