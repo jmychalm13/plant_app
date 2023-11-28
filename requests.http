@@ -58,6 +58,25 @@ GET http://localhost:3000/care_instructions/3.json
 ### Cuttings Index
 GET http://localhost:3000/cuttings.json
 
+### Cuttings Create
+POST http://localhost:3000/cuttings.json
+Content-Type: application/json
+
+{
+  "user_plant_id": 3,
+  "zone_id": 1,
+  "date_cut": 1,
+  "roots": true
+}
+
+### Cuttings Update
+PATCH http://localhost:3000/cuttings/2.json
+Content-Type: application/json
+
+{
+  "roots": false
+}
+
 ### Types Index
 GET http://localhost:3000/types.json
 

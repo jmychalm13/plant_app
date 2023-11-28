@@ -17,6 +17,12 @@ Rails.application.routes.draw do
 
   get "/cuttings" => "cuttings#index"
 
+  post "/cuttings" => "cuttings#create"
+
+  patch "/cuttings/:id" => "cuttings#update"
+
+  delete "/cuttings/:id" => "cuttings#destroy"
+
   get "/types" => "types#index"
 
   post "/types" => "types#create"
@@ -28,4 +34,8 @@ Rails.application.routes.draw do
   delete "/types/:id" => "types#destroy"
 
   post "/watering_schedules" => "watering_schedules#create"
+
+  patch "/watering_schedules/:id" => "watering_schedules#update"
+
+  delete "/watering_schedules/:id" => "watering_schedules#destroy"
 end
