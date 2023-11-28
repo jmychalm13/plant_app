@@ -4,11 +4,10 @@ GET http://localhost:3000/user_plants.json
 ### Create User Plant
 POST http://localhost:3000/user_plants.json
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDA4MjgzMDZ9.woohRwo2ZyvH0DYUWaEWxvuW_vGDEDW3jYZKQCgYRr4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDEyNTg3NjF9.cNIMlVAtEuFUSgsoR1srco3QXsuFzKvaYHFHR9oMrbo
 
 {
-  "name": "Mican",
-  "plant_id": 1,
+  "name": "Philodendron",
   "zone_id": 1,
   "type_id": 1,
   "img_url": "test.jpg"
