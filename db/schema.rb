@@ -1,4 +1,4 @@
-ActiveRecord::Schema[7.0].define(version: 2023_11_28_003449) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_113613) do
   enable_extension "plpgsql"
 
   create_table "care_instructions", force: :cascade do |t|
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_003449) do
     t.integer "user_plant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "schedule"
   end
 
   create_table "types", force: :cascade do |t|

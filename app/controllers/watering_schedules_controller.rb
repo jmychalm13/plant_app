@@ -4,6 +4,11 @@ class WateringSchedulesController < ApplicationController
     render :index
   end
 
+  def show
+    @watering_schedule = WateringSchedule.find(params[:id])
+    render :show
+  end
+
   def create
     @watering_schedule = WateringSchedule.create(
       user_plant_id: params[:user_plant_id],

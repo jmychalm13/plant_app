@@ -80,14 +80,25 @@ Content-Type: application/json
   "roots": false
 }
 
-### Types Index
-GET http://localhost:3000/types.json
-
-### WateringSchedule Create
+### Watering Schedule Create
 POST http://localhost:3000/watering_schedules.json
 Content-Type: application/json
 
 {
   "user_plant_id": 3,
-  "schedule": "Check soil on Tuesday and Thursday and water when dry."
+  "schedule": "Water when dry."
 }
+
+### Types Index
+GET http://localhost:3000/types.json
+
+### FertilizerSchedule Create
+PATCH http://localhost:3000/fertilizer_schedules/1.json
+Content-Type: application/json
+
+{
+  "schedule": "Feed every week."
+}
+
+###FertilizerSchedule Destroy
+DELETE http://localhost:3000/fertilizer_schedules/1.json

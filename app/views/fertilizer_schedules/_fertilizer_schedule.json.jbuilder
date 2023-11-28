@@ -1,0 +1,2 @@
+json.user_plant_id fertilizer_schedule.user_plant_id
+json.schedule fertilizer_schedule.schedule
