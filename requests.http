@@ -55,8 +55,11 @@ GET http://localhost:3000/care_instructions/3.json
 ### Testing API
 GET http://localhost:3000/care_instructions/3.json
 
+### CareInstructions Index
+GET http://localhost:3000/care_instructions.json
+
 ### Cuttings Index
-GET http://localhost:3000/cuttings.json
+GET http://localhost:3000/watering_schedules.json
 
 ### Cuttings Create
 POST http://localhost:3000/cuttings.json

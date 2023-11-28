@@ -1,4 +1,9 @@
 class WateringSchedulesController < ApplicationController
+  def index
+    @watering_schedules = WateringSchedule.all
+    render :index
+  end
+
   def create
     @watering_schedule = WateringSchedule.create(
       user_plant_id: params[:user_plant_id],

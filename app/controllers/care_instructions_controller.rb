@@ -1,8 +1,13 @@
 class CareInstructionsController < ApplicationController
   require 'uri'
   require 'net/http'
+
+  def index
+    @care_instructions = CareInstruction.all
+    render :index
+  end
   
-  def show
+  def create
   plant = UserPlant.find(params[:id])
     url = URI("https://house-plants2.p.rapidapi.com/search?query=#{plant.name}")
     
@@ -19,13 +24,14 @@ class CareInstructionsController < ApplicationController
     @parsed_data = JSON.parse(json_data)
 
     # Creating recommendation object to be returned to frontend containing light and water requirements
-    recommendation = CareInstruction.create(
+    @care_instruction = CareInstruction.create(
       user_plant_id: plant.id,
       instructions: "This plants does best with #{@parsed_data[0]["item"]["Light ideal"]} and #{@parsed_data[0]["item"]["Watering"]} water"
     )
 
 
-    render json: recommendation
+    render :show
+    # render json: recommendation
     # render json: @parsed_data
   end
 end

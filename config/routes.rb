@@ -3,17 +3,11 @@ Rails.application.routes.draw do
 
   post "/sessions" => "sessions#create"
 
-  get "/user_plants" => "user_plants#index"
+  resources :user_plants
 
-  post "/user_plants" => "user_plants#create"
+  get "/care_instructions" => "care_instructions#index"
 
-  get "/user_plants/:id" => "user_plants#show"
-
-  patch "/user_plants/:id" => "user_plants#update"
-
-  delete "/user_plants/:id" => "user_plants#destroy"
-
-  get "/care_instructions/:id" => "care_instructions#show"
+  get "/care_instructions/:id" => "care_instructions#create"
 
   get "/cuttings" => "cuttings#index"
 
@@ -38,4 +32,6 @@ Rails.application.routes.draw do
   patch "/watering_schedules/:id" => "watering_schedules#update"
 
   delete "/watering_schedules/:id" => "watering_schedules#destroy"
+
+  get "/watering_schedules" => "watering_schedules#index"
 end

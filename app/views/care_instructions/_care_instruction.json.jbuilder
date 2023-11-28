@@ -1,1 +1,2 @@
-
+json.user_plant_id care_instruction.user_plant_id
+json.instructions care_instruction.instructions
