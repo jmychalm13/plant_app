@@ -6,9 +6,4 @@ class UserPlant < ApplicationRecord
   has_many :care_instructions
   has_many :cuttings
   belongs_to :type
-
-  def get_watering_instructions
-    @parsed_data
-  end
-
 end

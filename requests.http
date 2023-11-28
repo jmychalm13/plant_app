@@ -57,3 +57,15 @@ GET http://localhost:3000/care_instructions/3.json
 
 ### Cuttings Index
 GET http://localhost:3000/cuttings.json
+
+### Types Index
+GET http://localhost:3000/types.json
+
+### WateringSchedule Create
+POST http://localhost:3000/watering_schedules.json
+Content-Type: application/json
+
+{
+  "user_plant_id": 3,
+  "schedule": "Check soil on Tuesday and Thursday and water when dry."
+}

@@ -11,7 +11,6 @@ class CuttingsController < ApplicationController
       date_cut: params[:date_cut],
       roots: params[:roots],
     )
-
     render :show
   end
 end

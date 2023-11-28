@@ -1,6 +1,4 @@
-
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_183839) do
-  # These are extensions that must be enabled in order to support this database
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_003449) do
   enable_extension "plpgsql"
 
   create_table "care_instructions", force: :cascade do |t|
@@ -33,7 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_183839) do
 
   create_table "user_plants", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "plant_id"
     t.integer "zone_id"
     t.integer "type_id"
     t.string "img_url"
@@ -55,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_183839) do
     t.integer "user_plant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "schedule"
   end
 
   create_table "zones", force: :cascade do |t|

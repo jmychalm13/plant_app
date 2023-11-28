@@ -16,4 +16,16 @@ Rails.application.routes.draw do
   get "/care_instructions/:id" => "care_instructions#show"
 
   get "/cuttings" => "cuttings#index"
+
+  get "/types" => "types#index"
+
+  post "/types" => "types#create"
+
+  patch "/types/:id" => "types#update"
+
+  get "/types/:id" => "types#show"
+
+  delete "/types/:id" => "types#destroy"
+
+  post "/watering_schedules" => "watering_schedules#create"
 end
