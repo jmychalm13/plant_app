@@ -102,3 +102,22 @@ Content-Type: application/json
 
 ###FertilizerSchedule Destroy
 DELETE http://localhost:3000/fertilizer_schedules/1.json
+
+### Zone Create
+POST http://localhost:3000/zones.json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDEyNTg3NjF9.cNIMlVAtEuFUSgsoR1srco3QXsuFzKvaYHFHR9oMrbo
+
+{
+  "location_name": "Den",
+  "light_level": "medium"
+}
+
+###Zone Update
+PATCH http://localhost:3000/zones/1.json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDEyNTg3NjF9.cNIMlVAtEuFUSgsoR1srco3QXsuFzKvaYHFHR9oMrbo
+
+{
+  "light_level": "high"
+}

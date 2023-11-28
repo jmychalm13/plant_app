@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   resources :watering_schedules
 
   resources :fertilizer_schedules
+
+  resources :zones
 end
