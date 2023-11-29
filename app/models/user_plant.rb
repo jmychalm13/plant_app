@@ -7,15 +7,11 @@ class UserPlant < ApplicationRecord
   has_many :cuttings
   belongs_to :type
 
-  def zone_name
-    id = zone_id
-    zone = Zone.find(id)
-    return zone.location_name
-  end
+ def zone_name
+  zone[:location_name]
+ end
 
-  def type_name
-    id = type_id
-    type = Type.find(id)
-    return type.type_name
-  end
+ def type_name
+    type[:type_name]
+ end
 end

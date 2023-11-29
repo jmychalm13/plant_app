@@ -13,6 +13,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDEyNTg3N
   "img_url": "test.jpg"
 }
 
+### UserPlant Index Action
+GET http://localhost:3000/user_plants.json
+
 ###Show Action
 GET http://localhost:3000/user_plants/3.json
 
