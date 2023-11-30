@@ -123,3 +123,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDEyNTg3N
 {
   "light_level": "high"
 }
+
+###Details Test
+GET http://localhost:3000/details/monstera.json

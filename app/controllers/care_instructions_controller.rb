@@ -21,17 +21,18 @@ class CareInstructionsController < ApplicationController
     response = http.request(request)
     json_data = response.read_body
 
-    @parsed_data = JSON.parse(json_data)
+    parsed_data = JSON.parse(json_data)
 
     # Creating recommendation object to be returned to frontend containing light and water requirements
     @care_instruction = CareInstruction.create(
+      img: parsed_data[0]["item"]["Img"],
       user_plant_id: plant.id,
-      instructions: "This plants does best with #{@parsed_data[0]["item"]["Light ideal"]} and #{@parsed_data[0]["item"]["Watering"]} water"
+      instructions: "This plants does best with #{parsed_data[0]["item"]["Light ideal"]} and #{parsed_data[0]["item"]["Watering"]} water"
     )
 
 
-    render :show
-    # render json: recommendation
-    # render json: @parsed_data
+    render json: parsed_data
   end
+
+
 end

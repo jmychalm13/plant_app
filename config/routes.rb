@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :fertilizer_schedules
 
   resources :zones
+
+  get "/details/:name" => "details#show"
 end
