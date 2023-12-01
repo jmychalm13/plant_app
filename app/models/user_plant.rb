@@ -14,4 +14,5 @@ class UserPlant < ApplicationRecord
  def type_name
     type[:type_name]
  end
+
 end

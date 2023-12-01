@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ### CareInstruction Show
-GET http://localhost:3000/care_instructions/3.json
+GET http://localhost:3000/care_instructions.json
 
 ### Testing API
 GET http://localhost:3000/care_instructions/3.json
@@ -108,11 +108,11 @@ DELETE http://localhost:3000/fertilizer_schedules/1.json
 ### Zone Create
 POST http://localhost:3000/zones.json
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDEyNTg3NjF9.cNIMlVAtEuFUSgsoR1srco3QXsuFzKvaYHFHR9oMrbo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDE0Nzg0Nzd9.8YupIyfa1jQemiRhUZZMbOQv1l1_3d-G3QPFy7oT09I
 
 {
-  "location_name": "Den",
-  "light_level": "medium"
+  "location_name": "Kitchen",
+  "light_level": "low"
 }
 
 ###Zone Update
@@ -126,3 +126,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDEyNTg3N
 
 ###Details Test
 GET http://localhost:3000/details/monstera.json
+
+### Dropdowns test
+GET http://localhost:3000/dropdowns/type.json
