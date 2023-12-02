@@ -1,10 +1,11 @@
 class DropdownsController < ApplicationController
   def type
-    types = []
     type_objects = Type.all
-    type_objects.each do |type|
-      types << type.type_name
-    end
-    render json: types
+    render json: type_objects
+  end
+
+  def zone
+    zone_objects = Zone.all
+    render json: zone_objects
   end
 end

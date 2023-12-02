@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   resources :zones
 
-  get "/details/:name" => "details#show"
+  post "/details" => "details#show"
 
   get "/dropdowns/type" => "dropdowns#type" 
+
+  get "/dropdowns/zone" => "dropdowns#zone"
 end
