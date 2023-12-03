@@ -8,4 +8,9 @@ class DropdownsController < ApplicationController
     zone_objects = Zone.all
     render json: zone_objects
   end
+
+  def plant
+    plants = UserPlant.all
+    render json: plants
+  end
 end

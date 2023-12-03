@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   get "/dropdowns/type" => "dropdowns#type" 
 
   get "/dropdowns/zone" => "dropdowns#zone"
+
+  get "/dropdowns/plant" => "dropdowns#plant"
 end
