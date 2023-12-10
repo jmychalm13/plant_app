@@ -1,4 +1,4 @@
-ActiveRecord::Schema[7.0].define(version: 2023_11_30_130538) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_10_213711) do
   enable_extension "plpgsql"
 
   create_table "care_instructions", force: :cascade do |t|
@@ -12,10 +12,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_130538) do
   create_table "cuttings", force: :cascade do |t|
     t.integer "user_plant_id"
     t.integer "zone_id"
-    t.integer "date_cut"
     t.boolean "roots", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date_cut"
   end
 
   create_table "fertilizer_schedules", force: :cascade do |t|
