@@ -1,4 +1,6 @@
 class UserPlantsController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
+
   def index
     @user_plants = UserPlant.all
     render :index
