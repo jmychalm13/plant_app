@@ -8,11 +8,11 @@ class UserPlant < ApplicationRecord
   belongs_to :type
 
  def zone_name
-  zone[:location_name]
+  zone.location_name if zone
  end
 
  def type_name
-    type[:type_name]
+   type.type_name if type
  end
 
 end

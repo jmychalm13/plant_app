@@ -2,10 +2,16 @@ require "test_helper"
 
 class UserPlantsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    User.create(first_name: "John", last_name: "Smith", email: "john@test.com", password: "password", password_confirmation: "password")
-    post "http://localhost:3000/sessions.json", params: {email: "john@test.com", password: "password"}
+    User.create(first_name: "Jane", last_name: "Smith", email: "jane@test.com", password: "password", password_confirmation: "password")
+    post "/sessions.json", params: {email: "jane@test.com", password: "password"}
     data = JSON.parse(response.body)
     @jwt = data["jwt"]
+  end
+
+  teardown do
+    # Optionally clean up created data after each test
+    @user.destroy if @user
+    # Additional cleanup if necessary
   end
 
   test "index" do
@@ -18,9 +24,16 @@ class UserPlantsControllerTest < ActionDispatch::IntegrationTest
 
   test "create" do
     assert_difference "UserPlant.count", 1 do
-      post "/user_plants.json", params: {user_id: 1, plant_id: 1, zone_id: 1, type_id: 1, img_url: "test.jpg"},
-      headers: {"Authorization" => "Bearer #{@jwt}"}
-      assert_response 200
+      post "/user_plants.json", params: {
+        zone_id: 1,
+        type_id: 1,
+        img_url: "test.jpg",
+        type_name: "Test Type"
+      },
+      headers: { "Authorization" => "Bearer #{@jwt}" }
+      
+      assert_response :success
     end
+
   end
 end
