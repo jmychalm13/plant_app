@@ -3,11 +3,11 @@
 one:
   user_plant_id: 1
   zone_id: 1
-  date_cut: 1
+  date_cut: "1111-11-11"
   roots: false
 
 two:
   user_plant_id: 1
   zone_id: 1
-  date_cut: 1
+  date_cut: "2222-22-22"
   roots: false
