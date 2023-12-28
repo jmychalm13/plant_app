@@ -7,7 +7,7 @@ class UserPlantsController < ApplicationController
   end
 
   def create
-    @user_plant = UserPlant.create(
+    @user_plant = UserPlant.create!(
       user_id: current_user.id,
       zone_id: params[:zone_id],
       type_id: params[:type_id],

@@ -4,6 +4,8 @@ class UserPlantsControllerTest < ActionDispatch::IntegrationTest
   setup do
     User.create(first_name: "Jane", last_name: "Smith", email: "jane@test.com", password: "password", password_confirmation: "password")
     post "/sessions.json", params: {email: "jane@test.com", password: "password"}
+    Type.create(type_name: "Test Type")
+    Zone.create(user_id: User.first, location_name: "Den", light_level: "high")
     data = JSON.parse(response.body)
     @jwt = data["jwt"]
   end
@@ -24,16 +26,18 @@ class UserPlantsControllerTest < ActionDispatch::IntegrationTest
 
   test "create" do
     assert_difference "UserPlant.count", 1 do
-      post "/user_plants.json", params: {
-        zone_id: 1,
-        type_id: 1,
-        img_url: "test.jpg",
-        type_name: "Test Type"
-      },
-      headers: { "Authorization" => "Bearer #{@jwt}" }
+      post "/user_plants.json",
+        params: {
+          zone_id: Zone.first.id,
+          type_id: Type.first.id,
+          img_url: "test.jpg",
+          name: "Test Plant"
+        },
+        headers: {
+          "Authorization" => "Bearer #{@jwt}",
+        }
       
       assert_response :success
     end
-
   end
 end
