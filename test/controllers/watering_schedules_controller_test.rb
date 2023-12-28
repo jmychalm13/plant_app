@@ -25,4 +25,15 @@ class WateringSchedulesControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
   end
+
+  test "update" do
+    watering_schedule = WateringSchedule.first
+    patch "/watering_schedules/#{watering_schedule.id}.json", params: {
+      schedule: "updated test schedule"
+    }
+    assert_response :success
+
+    data = JSON.parse(response.body)
+    assert_equal "updated test schedule", data["schedule"]
+  end
 end
