@@ -24,6 +24,14 @@ class UserPlantsControllerTest < ActionDispatch::IntegrationTest
     assert_equal UserPlant.count, data.length
   end
 
+  test "show" do
+    get "/user_plants/#{UserPlant.first.id}.json"
+    assert_response 200
+
+    data = JSON.parse(response.body)
+    assert_equal ["id", "user_id", "type_name", "name", "watering_schedules", "fertilizer_schedules", "care_instructions", "img_url", "created_at", "updated_at", "zone_name"], data.keys
+  end
+
   test "create" do
     assert_difference "UserPlant.count", 1 do
       post "/user_plants.json",
