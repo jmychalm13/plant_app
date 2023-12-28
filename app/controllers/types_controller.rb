@@ -18,7 +18,8 @@ class TypesController < ApplicationController
   end
 
   def update
-    @type = Type.update(
+    @type = Type.find_by(id: params[:id])
+    @type.update(
       type_name: params[:type_name] || @type.type_name
     )
     render :show
