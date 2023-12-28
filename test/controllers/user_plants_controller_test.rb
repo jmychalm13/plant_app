@@ -59,4 +59,14 @@ class UserPlantsControllerTest < ActionDispatch::IntegrationTest
     }
     assert_response :success
   end
+
+  test "destroy" do
+    assert_difference "UserPlant.count", -1 do
+      delete "/user_plants/#{UserPlant.first.id}.json",
+      headers: {
+        "Authorization" => "Bearer #{@jwt}",
+      }
+      assert_response :success
+    end
+  end
 end
