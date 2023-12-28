@@ -36,4 +36,11 @@ class WateringSchedulesControllerTest < ActionDispatch::IntegrationTest
     data = JSON.parse(response.body)
     assert_equal "updated test schedule", data["schedule"]
   end
+
+  test "destroy" do
+    assert_difference "WateringSchedule.count", -1 do
+      delete "/watering_schedules/#{WateringSchedule.first.id}.json"
+      assert_response :success
+    end
+  end
 end
