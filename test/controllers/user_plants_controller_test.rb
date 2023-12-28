@@ -48,4 +48,15 @@ class UserPlantsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
   end
+
+  test "update" do
+    user_plant = UserPlant.first
+    patch "/user_plants/#{user_plant.id}.json", params: {
+      name: "Updated Name"
+    },
+    headers: {
+      "Authorization" => "Bearer #{@jwt}",
+    }
+    assert_response :success
+  end
 end
