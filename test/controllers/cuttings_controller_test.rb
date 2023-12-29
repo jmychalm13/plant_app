@@ -37,4 +37,19 @@ class CuttingsControllerTest < ActionDispatch::IntegrationTest
     data = JSON.parse(response.body)
     assert_equal ["user_plant_id", "zone_id", "date_cut", "roots", "created_at", "updated_at"], data.keys
   end
+
+  test "update" do
+    cutting = Cutting.first
+    patch "/cuttings/#{cutting.id}.json", params: {
+      roots: false
+    }
+    assert_response :success
+  end
+
+  test "destroy" do
+    assert_difference "Cutting.count", -1 do
+      delete "/cuttings/#{Cutting.first.id}.json"
+      assert_response :success
+    end
+  end
 end
