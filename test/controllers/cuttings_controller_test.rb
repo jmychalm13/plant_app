@@ -30,11 +30,11 @@ class CuttingsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  # test "show" do
-  #   get "/cuttings/#{Cutting.first.id}.json"
-  #   assert_response :success
+  test "show" do
+    get "/cuttings/#{Cutting.first.id}.json"
+    assert_response :success
 
-  #   data = JSON.parse(response.body)
-  #   assert_equal ["user_plant_id", "zone_id", "roots", "date_cut"], data.keys
-  # end
+    data = JSON.parse(response.body)
+    assert_equal ["user_plant_id", "zone_id", "date_cut", "roots", "created_at", "updated_at"], data.keys
+  end
 end

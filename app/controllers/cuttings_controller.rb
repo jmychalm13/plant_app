@@ -14,6 +14,11 @@ class CuttingsController < ApplicationController
     render :show
   end
 
+  def show
+    @cutting = Cutting.find(params[:id])
+    render :show
+  end
+
   def update
     @cutting = Cutting.find(params[:id])
     @cutting.update(
