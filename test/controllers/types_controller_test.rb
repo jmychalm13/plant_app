@@ -37,4 +37,10 @@ class TypesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "updated type", data["type_name"]
   end
   
+  test "destroy" do
+    assert_difference "Type.count", -1 do
+      delete "/types/#{Type.first.id}.json"
+      assert_response :success
+    end
+  end
 end

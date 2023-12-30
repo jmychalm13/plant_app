@@ -18,6 +18,14 @@ class ZonesControllerTest < ActionDispatch::IntegrationTest
     data = JSON.parse(response.body)
     assert_equal Zone.count, data.length
   end
+
+  test "show" do
+    get "/zones/#{Zone.first.id}.json"
+    assert_response :success
+
+    data = JSON.parse(response.body)
+    assert_equal ["user_id", "location_name", "light_level"], data.keys
+  end
   
   test "create" do
     assert_difference "Zone.count", 1 do
@@ -33,4 +41,25 @@ class ZonesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "update" do
+    patch "/zones/#{Zone.first.id}.json", params: {
+      light_level: "high"
+    },
+    headers: {
+      "Authorization" => "Bearer #{@jwt}"
+    }
+    assert_response :success
+
+    data = JSON.parse(response.body)
+    assert_equal "high", data["light_level"]
+  end
+
+  test "destroy" do
+    assert_difference "Zone.count", -1 do
+      delete "/zones/#{Zone.first.id}.json", headers: {
+        "Authorization" => "Bearer #{@jwt}"
+      }
+      assert_response :success
+    end
+  end
 end
