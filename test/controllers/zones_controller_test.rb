@@ -10,6 +10,14 @@ class ZonesControllerTest < ActionDispatch::IntegrationTest
     data = JSON.parse(response.body)
     @jwt = data["jwt"]
   end
+
+  test "index" do
+    get "/zones.json"
+    assert_response :success
+
+    data = JSON.parse(response.body)
+    assert_equal Zone.count, data.length
+  end
   
   test "create" do
     assert_difference "Zone.count", 1 do
@@ -25,11 +33,4 @@ class ZonesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  # test "index" do
-  #   get "/zones.json"
-  #   assert_response :success
-
-  #   data = JSON.parse(response.body)
-  #   assert_equal Zone.count, data.length
-  # end
 end

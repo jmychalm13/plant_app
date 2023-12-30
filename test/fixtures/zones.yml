@@ -6,6 +6,6 @@ one:
   light_level: MyString
 
 two:
-  user_id: 1
-  location_name: MyString
-  light_level: MyString
+  user_id: 2
+  location_name: MyStringTwo
+  light_level: MyStringTwo

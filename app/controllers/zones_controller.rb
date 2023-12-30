@@ -1,7 +1,7 @@
 class ZonesController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
   def index
-    @zone = Zone.all
+    @zones = Zone.all
     render :index
   end
 
