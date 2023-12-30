@@ -7,6 +7,8 @@ class CuttingsControllerTest < ActionDispatch::IntegrationTest
     Zone.create(user_id: User.first.id, location_name: "den", light_level: "high")
     Type.create(type_name: "test type")
     UserPlant.create(user_id: User.first.id, zone_id: Zone.first.id, type_id: Type.first.id, img_url: "test.jpg", name: "test plant")
+    data = JSON.parse(response.body)
+    @jwt = data["jwt"]
   end
 
   test "index" do
@@ -24,6 +26,8 @@ class CuttingsControllerTest < ActionDispatch::IntegrationTest
         zone_id: Zone.first.id,
         roots: true,
         date_cut: "2023-12-28"
+      }, headers: {
+        "Authorization" => "Bearer #{@jwt}"
       }
 
       assert_response :success
@@ -42,13 +46,17 @@ class CuttingsControllerTest < ActionDispatch::IntegrationTest
     cutting = Cutting.first
     patch "/cuttings/#{cutting.id}.json", params: {
       roots: false
+    }, headers: {
+      "Authorization" => "Bearer #{@jwt}"
     }
     assert_response :success
   end
 
   test "destroy" do
     assert_difference "Cutting.count", -1 do
-      delete "/cuttings/#{Cutting.first.id}.json"
+      delete "/cuttings/#{Cutting.first.id}.json", headers: {
+        "Authorization" => "Bearer #{@jwt}"
+      }
       assert_response :success
     end
   end
