@@ -1,4 +1,6 @@
 class TypesController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
+
   def index
     @types = Type.all
     render :index

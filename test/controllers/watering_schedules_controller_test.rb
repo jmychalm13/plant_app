@@ -1,6 +1,16 @@
 require "test_helper"
 
 class WateringSchedulesControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    User.create(first_name: "Jane", last_name: "Smith", email: "jane@test.com", password: "password", password_confirmation: "password")
+    post "/sessions.json", params: {
+      email: "jane@test.com",
+      password: "password"
+    }
+    data = JSON.parse(response.body)
+    @jwt = data["jwt"]
+  end
+
   test "index" do
     get "/watering_schedules.json"
     assert_response 200
@@ -20,7 +30,9 @@ class WateringSchedulesControllerTest < ActionDispatch::IntegrationTest
   test "create" do
     assert_difference "WateringSchedule.count", 1 do
       post "/watering_schedules.json",
-      params: {user_plant_id: UserPlant.first.id, schedule: "test schedule"}
+      params: {user_plant_id: UserPlant.first.id, schedule: "test schedule"}, headers: {
+        "Authorization" => "Bearer #{@jwt}"
+      }
 
       assert_response :success
     end
@@ -30,6 +42,8 @@ class WateringSchedulesControllerTest < ActionDispatch::IntegrationTest
     watering_schedule = WateringSchedule.first
     patch "/watering_schedules/#{watering_schedule.id}.json", params: {
       schedule: "updated test schedule"
+    }, headers: {
+      "Authorization" => "Bearer #{@jwt}"
     }
     assert_response :success
 
@@ -39,7 +53,9 @@ class WateringSchedulesControllerTest < ActionDispatch::IntegrationTest
 
   test "destroy" do
     assert_difference "WateringSchedule.count", -1 do
-      delete "/watering_schedules/#{WateringSchedule.first.id}.json"
+      delete "/watering_schedules/#{WateringSchedule.first.id}.json", headers: {
+        "Authorization" => "Bearer #{@jwt}"
+      }
       assert_response :success
     end
   end

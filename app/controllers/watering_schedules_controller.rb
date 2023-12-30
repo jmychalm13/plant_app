@@ -1,4 +1,6 @@
 class WateringSchedulesController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
+
   def index
     @watering_schedules = WateringSchedule.all
     render :index
