@@ -8,6 +8,8 @@ class DetailsControllerTest < ActionDispatch::IntegrationTest
       name: "monstera"
     }
 
-    assert_response :success
+    assert_response 200
+    data = JSON.parse(response.body)
+    assert_equal(["Id", "Name", "Image", "LifeForm", "Family", "Origin", "EaseOfCultivation", "Size", "GrowthRate", "Lifespan", "Temperature", "Humidity", "Lighting", "Soil", "Watering", "Fertilizer", "Reproduction", "Bloom", "Transfer", "Care", "Difficulties", "AirCleaning", "Toxicity"], data.keys)
   end
 end
