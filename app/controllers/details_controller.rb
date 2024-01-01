@@ -1,4 +1,6 @@
 class DetailsController < ApplicationController
+  require 'uri'
+  require 'net/http'
 
   def show
     plant = params[:name]
